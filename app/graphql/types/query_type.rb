@@ -9,5 +9,12 @@ module Types
       Item.includes(:user)
       # Item.preload(:user)
     end
+
+    field :me, Types::UserType, null: true
+
+    def me
+      binding.pry
+      content[:current_user]
+    end
   end
 end
