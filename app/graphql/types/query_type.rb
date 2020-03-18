@@ -6,15 +6,13 @@ module Types
           description: "Returns a list of items in the martian library"
 
     def items
-      Item.includes(:user)
-      # Item.preload(:user)
+      Item.preload(:user)
     end
 
     field :me, Types::UserType, null: true
 
     def me
-      binding.pry
-      content[:current_user]
+      context[:current_user]
     end
   end
 end
